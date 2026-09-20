@@ -24,10 +24,38 @@ public class MergeSort {
         k++;
         }
         while(j < right.length){
-            result[k] = left[j];
+            result[k] = right[j];
             j++;
             k++;
     }
     return result;
     }
+
+    static int[] MergeSort(int[] arr){
+        if(arr.length == 1){
+            return arr;
+        }
+        int mid = arr.length / 2;
+        int[] l = new int[mid];
+
+        for(int i = 0; i < mid; i++){
+            l[i] = arr[i];
+        }
+
+        int[] r = new int[arr.length-mid];
+        for(int i = mid; i < arr.length; i++){
+            r[i-mid] = arr[i];
+        }
+
+        l = MergeSort(l);
+        r = MergeSort(r);
+
+        return Merge(l, r);
+
+
+    }
+
+
+
+
 }
